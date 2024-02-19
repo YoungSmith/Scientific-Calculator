@@ -15,12 +15,19 @@ pipeline {
                 }
             }
         }
-	
+
+	stage('Maven Build') {
+            steps {
+                script {
+                    sh 'mvn clean package'
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
                     // Build Docker image
-                    sh 'mvn clean package'
                     docker.build("${DOCKER_IMAGE_NAME}", '.')
                 }
             }
