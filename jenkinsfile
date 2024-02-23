@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-	stage('Maven Build') {
+        stage('Maven Build') {
             steps {
                 script {
                     sh 'mvn clean package'
@@ -35,27 +35,28 @@ pipeline {
 
         stage('Push Docker Images') {
             steps {
-                script{
+                script {
                     docker.withRegistry('', 'youngsmithdocker') {
-                    sh 'docker tag calculator youngsmith11/calculator:latest'
-                    sh 'docker push youngsmith11/calculator'
+                        sh 'docker tag calculator youngsmith11/calculator:latest'
+                        sh 'docker push youngsmith11/calculator'
                     }
-                 }
+                }
             }
         }
 
-   stage('Run Ansible Playbook') {
+        stage('Run Ansible Playbook') {
             steps {
                 script {
                     ansiblePlaybook(
                         playbook: 'deploy.yml',
                         inventory: 'inventory'
-                     )
+                    )
                 }
             }
         }
-
-    }post {
+    }
+    
+    post {
         always {
             emailext (
                 to: 'ts137137@gmail.com',
