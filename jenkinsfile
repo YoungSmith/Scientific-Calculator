@@ -56,4 +56,5 @@ pipeline {
         }
 
     }
+mail bcc: '', body: 'New Build has been generated.', cc: '', from: '', replyTo: '', subject: 'SPE Miniproject -Scientific Calculator Jenkins Build Status', to: 'ts137137@gmail.com'
 }
