@@ -59,7 +59,7 @@ pipeline {
     post {
         always {
             emailext (
-                to: 'platformcrowdsourcing@gmail.com',
+                to: 'playboytarunishere@gmail.com',
                 subject: 'SPE Miniproject - Scientific Calculator Jenkins Build Status',
                 body: 'New Build has been generated.',
                 attachLog: true,
